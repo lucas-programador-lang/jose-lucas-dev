@@ -1,5 +1,6 @@
 lucide.createIcons();
 
+// Revelação de seções ao scroll
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('active');
@@ -16,12 +17,13 @@ document.querySelectorAll('.faq-question').forEach(button => {
     });
 });
 
-// Parallax sutil no fundo
+// Parallax sutil no blob de fundo
 document.addEventListener('mousemove', (e) => {
     const blob = document.querySelector('.blob-glow');
     if(blob) {
-        const x = (window.innerWidth - e.pageX * 2) / 90;
-        const y = (window.innerHeight - e.pageY * 2) / 90;
+        // Suavizei a divisão para o movimento ser mais sutil e elegante
+        const x = (window.innerWidth - e.pageX * 2) / 100;
+        const y = (window.innerHeight - e.pageY * 2) / 100;
         blob.style.transform = `translate(${x}px, ${y}px)`;
     }
 });
